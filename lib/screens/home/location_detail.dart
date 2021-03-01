@@ -4,11 +4,15 @@ import 'text_section.dart';
 import '../../models/location.dart';
 
 class LocationDetail extends StatelessWidget{ 
+  final int _locationId;
+
+  LocationDetail(this._locationId);
+
 
   @override
   Widget build(BuildContext context){
-    final locations = Location.fetchAll();
-    final location = locations.first;
+    
+    final location = Location.fetchDetail(_locationId);
 
     List<Widget> textSections(Location location){
       return location.facts.map((fact) => TextSection(fact.title, fact.body)).toList();
